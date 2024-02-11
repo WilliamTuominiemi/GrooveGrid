@@ -32,7 +32,7 @@ const play = (notes) => {
             default:
               break;
           }
-        }, note.x * 1000)
+        }, note.x * 500)
       );
     });
   }

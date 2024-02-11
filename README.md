@@ -1,9 +1,7 @@
 # GrooveGrid
 
-## Create
+![Tux, the Linux mascot](/public/GrooveGrid.png)
 
-- Produce music by placing notes on the grid
+## Create music
 
-## Share
-
-- Share your creations on the feed
+- Produce music by placing notes on the grid. Instruments are the guitar, violin, drums, saxophone and french-horn.
