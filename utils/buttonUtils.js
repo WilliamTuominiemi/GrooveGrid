@@ -6,7 +6,8 @@ import violin from '@/public/sounds/violin.mp3';
 
 let timeouts = [];
 
-const play = (notes) => {
+const play = (notes, mix) => {
+  console.log(mix);
   stop();
   const notesArray = Object.values(notes);
   if (notesArray.length > 0) {
@@ -15,19 +16,19 @@ const play = (notes) => {
         setTimeout(function () {
           switch (note.y) {
             case 1:
-              playSound(guitar);
+              playSound(guitar, mix[0]);
               break;
             case 2:
-              playSound(violin);
+              playSound(violin, mix[1]);
               break;
             case 3:
-              playSound(drum);
+              playSound(drum, mix[2]);
               break;
             case 4:
-              playSound(french_horn);
+              playSound(french_horn, mix[3]);
               break;
             case 5:
-              playSound(saxophone);
+              playSound(saxophone, mix[4]);
               break;
             default:
               break;
@@ -38,9 +39,10 @@ const play = (notes) => {
   }
 };
 
-const playSound = (note) => {
+const playSound = (note, mix) => {
   let player = new Audio(note);
   player.addEventListener('canplay', () => {
+    player.playbackRate = (mix / 100) * 2;
     player.play();
   });
 };

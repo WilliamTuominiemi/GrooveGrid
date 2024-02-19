@@ -9,20 +9,32 @@ import Mixer from '@/components/Mixer';
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
+  const [activeMix, setActiveMix] = useState(0);
+  const [mix, setMix] = useState([50, 50, 50, 50, 50]);
 
   const updateNotes = (newNotes) => {
     setNotes(newNotes);
+  };
+
+  const updatePitch = (newPitch) => {
+    const newMix = [...mix];
+    newMix[activeMix] = newPitch;
+    setMix(newMix);
+  };
+
+  const onUpdateActiveMix = (newActive) => {
+    setActiveMix(newActive);
   };
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-powderBlue">
       <div className="flex flex-col">
         <div className="flex">
-          <Instruments />
+          <Instruments onUpdateActiveMix={onUpdateActiveMix} />
           <Canvas onUpdateNotes={updateNotes} />
-          <Controls notes={notes} />
+          <Controls notes={notes} mix={mix} />
         </div>
-        <Mixer />
+        <Mixer onUpdatePitch={updatePitch} active={activeMix} mix={mix} />
       </div>
     </main>
   );

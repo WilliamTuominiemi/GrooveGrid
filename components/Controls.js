@@ -4,12 +4,12 @@ import Image from 'next/image';
 
 import { play, stop } from '@/utils/buttonUtils';
 
-const Controls = ({ notes }) => {
+const Controls = ({ notes, mix }) => {
   return (
     <div className="grid grid-cols-1 place-content-evenly gap-y-5 bg-softSkyBlue p-4 m-1">
       <button
         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
-        onClick={() => play(notes)}
+        onClick={() => play(notes, mix)}
       >
         <Image src="/icons/play.svg" alt="Play Icon" width={10} height={10} />
       </button>
