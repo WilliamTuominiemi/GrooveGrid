@@ -124,7 +124,11 @@ const Canvas = ({ onUpdateNotes }) => {
     draw(coords);
   };
 
-  return <canvas onMouseMove={handleMouseMove} onMouseDown={handleMouseDown} ref={canvasRef} />;
+  return (
+    <div className="bg-paleAqua p-2 my-1">
+      <canvas onMouseMove={handleMouseMove} onMouseDown={handleMouseDown} ref={canvasRef} />
+    </div>
+  );
 };
 
-export { Canvas };
+export default Canvas;
