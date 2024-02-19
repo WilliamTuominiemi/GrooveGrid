@@ -42,7 +42,8 @@ const play = (notes, mix) => {
 const playSound = (note, mix) => {
   let player = new Audio(note);
   player.addEventListener('canplay', () => {
-    player.playbackRate = (mix / 100) * 2;
+    player.playbackRate = (mix[0] / 100) * 2;
+    player.volume = ((mix[1] / 100) * 2) / 2;
     player.play();
   });
 };

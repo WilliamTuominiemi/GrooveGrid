@@ -10,7 +10,13 @@ import Mixer from '@/components/Mixer';
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const [activeMix, setActiveMix] = useState(0);
-  const [mix, setMix] = useState([50, 50, 50, 50, 50]);
+  const [mix, setMix] = useState([
+    [50, 50],
+    [50, 50],
+    [50, 50],
+    [50, 50],
+    [50, 50],
+  ]);
 
   const updateNotes = (newNotes) => {
     setNotes(newNotes);
@@ -18,7 +24,13 @@ export default function Home() {
 
   const updatePitch = (newPitch) => {
     const newMix = [...mix];
-    newMix[activeMix] = newPitch;
+    newMix[activeMix][0] = newPitch;
+    setMix(newMix);
+  };
+
+  const updateVolume = (newVolume) => {
+    const newMix = [...mix];
+    newMix[activeMix][1] = newVolume;
     setMix(newMix);
   };
 
@@ -34,7 +46,7 @@ export default function Home() {
           <Canvas onUpdateNotes={updateNotes} />
           <Controls notes={notes} mix={mix} />
         </div>
-        <Mixer onUpdatePitch={updatePitch} active={activeMix} mix={mix} />
+        <Mixer onUpdatePitch={updatePitch} onUpdateVolume={updateVolume} active={activeMix} mix={mix} />
       </div>
     </main>
   );

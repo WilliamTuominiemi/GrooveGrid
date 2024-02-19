@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 
-const Mixer = ({ onUpdatePitch, active, mix }) => {
-  const [pitch, setPitch] = useState(50);
-  const [volume, setVolume] = useState(50);
+const Mixer = ({ onUpdatePitch, onUpdateVolume, active, mix }) => {
+  const [pitch, setPitch] = useState(mix[active][0]);
+  const [volume, setVolume] = useState(mix[active][1]);
 
   const handlePitchChange = (e) => {
     setPitch(parseInt(e.target.value, 10));
@@ -13,6 +13,7 @@ const Mixer = ({ onUpdatePitch, active, mix }) => {
 
   const handleVolumeChange = (e) => {
     setVolume(parseInt(e.target.value, 10));
+    onUpdateVolume(volume);
   };
 
   const getInstrumentText = (index) => {
@@ -34,17 +35,25 @@ const Mixer = ({ onUpdatePitch, active, mix }) => {
           name="pitch"
           min="10"
           max="99"
-          value={mix[active]}
+          value={mix[active][0]}
           onChange={handlePitchChange}
         />
-        <span className="ml-2">{pitch}</span>
+        <span className="ml-2">{mix[active][0]}</span>
       </div>
       <div className="flex items-center ml-2">
         <label htmlFor="volume" className="mr-2">
           Volume:
         </label>
-        <input type="range" id="volume" name="volume" min="10" max="99" value={volume} onChange={handleVolumeChange} />
-        <span className="ml-2">{volume}</span>
+        <input
+          type="range"
+          id="volume"
+          name="volume"
+          min="10"
+          max="99"
+          value={mix[active][1]}
+          onChange={handleVolumeChange}
+        />
+        <span className="ml-2">{mix[active][1]}</span>
       </div>
     </div>
   );
