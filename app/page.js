@@ -19,6 +19,8 @@ export default function Home() {
   ]);
   const [instrumentBoard, setInstrumentBoard] = useState([0, 1, 2, 3, 4]);
 
+  const instruments = ['🎹', '🥁', '🎷', '🎸', '🎻', '📯', '🪕', '📢', '🔔', '💥', '💵', '👏', '🎺', '🎤'];
+
   const updateNotes = (newNotes) => {
     setNotes(newNotes);
   };
@@ -49,7 +51,11 @@ export default function Home() {
     <main className="flex items-center justify-center min-h-screen bg-powderBlue">
       <div className="flex flex-col">
         <div className="flex">
-          <Instruments onUpdateActiveMix={updateActiveMix} instrumentBoard={instrumentBoard} />
+          <Instruments
+            onUpdateActiveMix={updateActiveMix}
+            instrumentBoard={instrumentBoard}
+            instruments={instruments}
+          />
           <Canvas onUpdateNotes={updateNotes} />
           <Controls notes={notes} mix={mix} />
         </div>
@@ -60,6 +66,7 @@ export default function Home() {
           mix={mix}
           onUpdateInstrumentBoard={updateInstrumentBoard}
           instrumentBoard={instrumentBoard}
+          instruments={instruments}
         />
       </div>
     </main>

@@ -1,8 +1,17 @@
-import drum from '@/public/sounds/drum.mp3';
-import french_horn from '@/public/sounds/french-horn.mp3';
-import guitar from '@/public/sounds/guitar.mp3';
-import saxophone from '@/public/sounds/saxophone.mp3';
-import violin from '@/public/sounds/violin.mp3';
+import piano from '@/public/sounds/piano.mp3'; // ID 1 🎹
+import drum from '@/public/sounds/drum.mp3'; // ID 2 🥁
+import saxophone from '@/public/sounds/saxophone.mp3'; // ID 3 🎷
+import guitar from '@/public/sounds/electric-guitar.mp3'; // ID 4 🎸
+import violin from '@/public/sounds/violin.mp3'; // ID 5 🎻
+import french_horn from '@/public/sounds/french-horn.mp3'; // ID 6 📯
+import banjo from '@/public/sounds/guitar.mp3'; // ID 7 🪕
+import air_horn from '@/public/sounds/air-horn.mp3'; // ID 8 📢
+import bell from '@/public/sounds/bell.mp3'; // ID 9 🔔
+import boom from '@/public/sounds/boom.mp3'; // ID 10 💥
+import cash from '@/public/sounds/cash.mp3'; // ID 11 💵
+import clap from '@/public/sounds/clap.mp3'; // ID 12 👏
+import flute from '@/public/sounds/flute.mp3'; // ID 13 🎺
+import vocal from '@/public/sounds/flute.mp3'; // ID 14 🎤
 
 let timeouts = [];
 

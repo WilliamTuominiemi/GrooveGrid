@@ -9,14 +9,14 @@ const Mixer = ({
   mix,
   onUpdateInstrumentBoard,
   instrumentBoard,
+  instruments,
 }) => {
   const [pitch, setPitch] = useState(mix[activeTrack][0]);
   const [volume, setVolume] = useState(mix[activeTrack][1]);
 
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
-  const instruments = ['🎸', '🎻', '🥁', '🎷', '📯', '🎹', '🪕', '🎺', '🎤', '🔔', '📢', '👏'];
-  const [activeInstruments, setActiveInstruments] = useState(['🎸', '🎻', '🥁', '🎷', '📯']);
+  const [activeInstruments, setActiveInstruments] = useState(['🎹', '🥁', '🎷', '🎸', '🎻']);
 
   const handlePitchChange = (e) => {
     setPitch(parseInt(e.target.value, 10));
@@ -46,7 +46,7 @@ const Mixer = ({
   };
 
   return (
-    <div className="flex-grow p-2 m-1 flex items-center justify-center bg-softSkyBlue">
+    <div className="w-full p-2  flex bg-softSkyBlue max-w-content">
       <div className="w-8 h-8 text-center mr-5 p-1 bg-StormyDustyTurquoise rounded-lg shadow-md ">
         <button
           className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline"
@@ -89,18 +89,16 @@ const Mixer = ({
           </div>
         </>
       ) : (
-        <div className="flex w-full bg-softSkyBlue overflow-x-auto">
-          <div className="overflow-x-auto">
-            {['🎸', '🎻', '🥁', '🎷', '📯', '🎹', '🪕', '🎺', '🎤', '🔔', '📢', '👏'].map((instrument, index) => (
-              <button
-                className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline px-2"
-                key={index}
-                onClick={() => handleChangeInstrument(index)}
-              >
-                {instrument}
-              </button>
-            ))}
-          </div>
+        <div className="flex w-full bg-softSkyBlue">
+          {instruments.map((instrument, index) => (
+            <button
+              className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline px-2"
+              key={index}
+              onClick={() => handleChangeInstrument(index)}
+            >
+              {instrument}
+            </button>
+          ))}
         </div>
       )}
     </div>

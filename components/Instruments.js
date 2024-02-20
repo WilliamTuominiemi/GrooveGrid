@@ -1,8 +1,6 @@
 'use client';
 
-const Instruments = ({ onUpdateActiveMix, instrumentBoard }) => {
-  const instruments = ['🎸', '🎻', '🥁', '🎷', '📯', '🎹', '🪕', '🎺', '🎤', '🔔', '📢', '👏'];
-
+const Instruments = ({ onUpdateActiveMix, instrumentBoard, instruments }) => {
   const handleClick = (index) => {
     onUpdateActiveMix(index);
   };
