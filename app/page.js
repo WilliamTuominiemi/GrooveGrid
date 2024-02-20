@@ -59,6 +59,7 @@ export default function Home() {
           active={activeMix}
           mix={mix}
           onUpdateInstrumentBoard={updateInstrumentBoard}
+          instrumentBoard={instrumentBoard}
         />
       </div>
     </main>

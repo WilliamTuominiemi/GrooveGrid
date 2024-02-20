@@ -2,14 +2,21 @@
 
 import React, { useState } from 'react';
 
-const Mixer = ({ onUpdatePitch, onUpdateVolume, active: activeTrack, mix, onUpdateInstrumentBoard }) => {
+const Mixer = ({
+  onUpdatePitch,
+  onUpdateVolume,
+  active: activeTrack,
+  mix,
+  onUpdateInstrumentBoard,
+  instrumentBoard,
+}) => {
   const [pitch, setPitch] = useState(mix[activeTrack][0]);
   const [volume, setVolume] = useState(mix[activeTrack][1]);
-  const [mixIcon, setMixIcon] = useState(activeTrack);
 
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
   const instruments = ['🎸', '🎻', '🥁', '🎷', '📯', '🎹', '🪕', '🎺', '🎤', '🔔', '📢', '👏'];
+  const [activeInstruments, setActiveInstruments] = useState(['🎸', '🎻', '🥁', '🎷', '📯']);
 
   const handlePitchChange = (e) => {
     setPitch(parseInt(e.target.value, 10));
@@ -21,10 +28,8 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active: activeTrack, mix, onUpda
     onUpdateVolume(volume);
   };
 
-  const getInstrumentText = (index) => {
-    //TODO: instruments array, then check at which index of track right now
-
-    return `${instruments[index]}`;
+  const getInstrumentText = () => {
+    return `${activeInstruments[activeTrack]}`;
   };
 
   const handleChangeInstrument = (index) => {
@@ -34,6 +39,10 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active: activeTrack, mix, onUpda
     };
 
     onUpdateInstrumentBoard(setting);
+
+    const newActive = [...activeInstruments];
+    newActive[activeTrack] = instruments[index];
+    setActiveInstruments(newActive);
   };
 
   return (
@@ -43,7 +52,7 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active: activeTrack, mix, onUpda
           className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline"
           onClick={() => setDropdownToggle(!dropdownToggle)}
         >
-          {getInstrumentText(mixIcon)}
+          {getInstrumentText()}
         </button>
       </div>
       {!dropdownToggle ? (
