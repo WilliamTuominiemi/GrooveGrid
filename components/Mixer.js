@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 
-import Image from 'next/image';
-
-const Mixer = ({ onUpdatePitch, onUpdateVolume, active, mix }) => {
-  const [pitch, setPitch] = useState(mix[active][0]);
-  const [volume, setVolume] = useState(mix[active][1]);
+const Mixer = ({ onUpdatePitch, onUpdateVolume, active: activeTrack, mix, onUpdateInstrumentBoard }) => {
+  const [pitch, setPitch] = useState(mix[activeTrack][0]);
+  const [volume, setVolume] = useState(mix[activeTrack][1]);
+  const [mixIcon, setMixIcon] = useState(activeTrack);
 
   const [dropdownToggle, setDropdownToggle] = useState(false);
+
+  const instruments = ['🎸', '🎻', '🥁', '🎷', '📯', '🎹', '🪕', '🎺', '🎤', '🔔', '📢', '👏'];
 
   const handlePitchChange = (e) => {
     setPitch(parseInt(e.target.value, 10));
@@ -21,13 +22,18 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active, mix }) => {
   };
 
   const getInstrumentText = (index) => {
-    const instruments = ['🎸', '🎻', '🥁', '🎷', '📯'];
+    //TODO: instruments array, then check at which index of track right now
+
     return `${instruments[index]}`;
   };
 
   const handleChangeInstrument = (index) => {
-    console.log(active);
-    console.log(index);
+    const setting = {
+      instrumentIndexToChange: activeTrack,
+      newInstrument: index,
+    };
+
+    onUpdateInstrumentBoard(setting);
   };
 
   return (
@@ -37,7 +43,7 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active, mix }) => {
           className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline"
           onClick={() => setDropdownToggle(!dropdownToggle)}
         >
-          {getInstrumentText(active)}
+          {getInstrumentText(mixIcon)}
         </button>
       </div>
       {!dropdownToggle ? (
@@ -52,10 +58,10 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active, mix }) => {
               name="pitch"
               min="10"
               max="99"
-              value={mix[active][0]}
+              value={mix[activeTrack][0]}
               onChange={handlePitchChange}
             />
-            <span className="ml-2 flex-shrink-0 w-8">{mix[active][0]}</span>
+            <span className="ml-2 flex-shrink-0 w-8">{mix[activeTrack][0]}</span>
           </div>
           <div className="flex items-center ml-2 w-full">
             <label htmlFor="volume" className="mr-2">
@@ -67,10 +73,10 @@ const Mixer = ({ onUpdatePitch, onUpdateVolume, active, mix }) => {
               name="volume"
               min="10"
               max="99"
-              value={mix[active][1]}
+              value={mix[activeTrack][1]}
               onChange={handleVolumeChange}
             />
-            <span className="ml-2 flex-shrink-0 w-8">{mix[active][1]}</span>
+            <span className="ml-2 flex-shrink-0 w-8">{mix[activeTrack][1]}</span>
           </div>
         </>
       ) : (

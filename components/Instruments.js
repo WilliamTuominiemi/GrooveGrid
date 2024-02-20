@@ -1,19 +1,21 @@
 'use client';
 
-const Instruments = ({ onUpdateActiveMix }) => {
+const Instruments = ({ onUpdateActiveMix, instrumentBoard }) => {
+  const instruments = ['🎸', '🎻', '🥁', '🎷', '📯', '🎹', '🪕', '🎺', '🎤', '🔔', '📢', '👏'];
+
   const handleClick = (index) => {
     onUpdateActiveMix(index);
   };
 
   return (
     <div className="grid grid-cols-1 place-content-evenly gap-y-5 bg-softSkyBlue p-4 m-1">
-      {['🎸', '🎻', '🥁', '🎷', '📯'].map((instrument, index) => (
+      {instrumentBoard.map((instrumentIndex, index) => (
         <button
           className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline"
           key={index}
           onClick={() => handleClick(index)}
         >
-          {instrument}
+          {instruments[instrumentIndex]}
         </button>
       ))}
     </div>
