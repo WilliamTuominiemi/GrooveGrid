@@ -105,6 +105,7 @@ const Canvas = ({ onUpdateNotes }) => {
         const updatedNotes = [...notes];
         updatedNotes.splice(index, 1);
         setNotes(updatedNotes);
+        onUpdateNotes(updatedNotes);
       }
     }
   }
