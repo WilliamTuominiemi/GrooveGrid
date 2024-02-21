@@ -15,29 +15,55 @@ import vocal from '@/public/sounds/flute.mp3'; // ID 14 🎤
 
 let timeouts = [];
 
-const play = (notes, mix) => {
-  console.log(mix);
+const play = (notes, mix, instrumentBoard) => {
   stop();
   const notesArray = Object.values(notes);
   if (notesArray.length > 0) {
     notesArray.forEach((note) => {
       timeouts.push(
         setTimeout(function () {
-          switch (note.y) {
+          switch (instrumentBoard[note.y - 1]) {
+            case 0:
+              playSound(piano, mix[note.y - 1]);
+              break;
             case 1:
-              playSound(guitar, mix[0]);
+              playSound(drum, mix[note.y - 1]);
               break;
             case 2:
-              playSound(violin, mix[1]);
+              playSound(saxophone, mix[note.y - 1]);
               break;
             case 3:
-              playSound(drum, mix[2]);
+              playSound(guitar, mix[note.y - 1]);
               break;
             case 4:
-              playSound(french_horn, mix[3]);
+              playSound(violin, mix[note.y - 1]);
               break;
             case 5:
-              playSound(saxophone, mix[4]);
+              playSound(french_horn, mix[note.y - 1]);
+              break;
+            case 6:
+              playSound(banjo, mix[note.y - 1]);
+              break;
+            case 7:
+              playSound(air_horn, mix[note.y - 1]);
+              break;
+            case 8:
+              playSound(bell, mix[note.y - 1]);
+              break;
+            case 9:
+              playSound(boom, mix[note.y - 1]);
+              break;
+            case 10:
+              playSound(cash, mix[note.y - 1]);
+              break;
+            case 11:
+              playSound(clap, mix[note.y - 1]);
+              break;
+            case 12:
+              playSound(flute, mix[note.y - 1]);
+              break;
+            case 13:
+              playSound(vocal, mix[note.y - 1]);
               break;
             default:
               break;

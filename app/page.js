@@ -56,8 +56,8 @@ export default function Home() {
             instrumentBoard={instrumentBoard}
             instruments={instruments}
           />
-          <Canvas onUpdateNotes={updateNotes} />
-          <Controls notes={notes} mix={mix} />
+          <Canvas onUpdateNotes={updateNotes} notes={notes} />
+          <Controls notes={notes} mix={mix} instrumentBoard={instrumentBoard} />
         </div>
         <Mixer
           onUpdatePitch={updatePitch}
