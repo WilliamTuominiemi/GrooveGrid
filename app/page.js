@@ -48,7 +48,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex items-center justify-center min-h-screen bg-powderBlue">
+    <main className="flex items-center justify-center mt-10">
       <div className="flex flex-col">
         <div className="flex">
           <Instruments
