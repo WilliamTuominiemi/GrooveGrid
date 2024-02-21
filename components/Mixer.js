@@ -48,14 +48,14 @@ const Mixer = ({
   return (
     <div className="w-full p-2 flex bg-softSkyBlue max-w-content">
       <button
-        className="w-8 h-8 text-center mr-5 p-1 bg-mutedLavenderBlue rounded-lg shadow-md hover:bg-StormyDustyTurquoise focus:outline-none focus:shadow-outline"
+        className="w-8 h-8 text-center mr-10 p-1 bg-mutedLavenderBlue rounded-lg shadow-md hover:bg-StormyDustyTurquoise focus:outline-none focus:shadow-outline"
         onClick={() => setDropdownToggle(!dropdownToggle)}
       >
         {getInstrumentText()}
       </button>
       {!dropdownToggle ? (
         <>
-          <div className="flex items-center w-full appear">
+          <div className="flex items-center px-1 w-full appear">
             <label htmlFor="pitch" className="mr-2">
               🎚️
             </label>

@@ -9,7 +9,7 @@ const Instruments = ({ onUpdateActiveMix, instrumentBoard, instruments }) => {
     <div className="grid grid-cols-1 place-content-evenly gap-y-5 bg-softSkyBlue p-4 m-1">
       {instrumentBoard.map((instrumentIndex, index) => (
         <button
-          className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline"
+          className="bg-mutedLavenderBlue hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline p-1"
           key={index}
           onClick={() => handleClick(index)}
         >

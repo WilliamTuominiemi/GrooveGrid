@@ -11,7 +11,7 @@ import boom from '@/public/sounds/boom.mp3'; // ID 10 💥
 import cash from '@/public/sounds/cash.mp3'; // ID 11 💵
 import clap from '@/public/sounds/clap.mp3'; // ID 12 👏
 import flute from '@/public/sounds/flute.mp3'; // ID 13 🎺
-import vocal from '@/public/sounds/flute.mp3'; // ID 14 🎤
+import vocal from '@/public/sounds/vocal.mp3'; // ID 14 🎤
 
 let timeouts = [];
 
