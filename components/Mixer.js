@@ -46,18 +46,16 @@ const Mixer = ({
   };
 
   return (
-    <div className="w-full p-2  flex bg-softSkyBlue max-w-content">
-      <div className="w-8 h-8 text-center mr-5 p-1 bg-StormyDustyTurquoise rounded-lg shadow-md ">
-        <button
-          className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline"
-          onClick={() => setDropdownToggle(!dropdownToggle)}
-        >
-          {getInstrumentText()}
-        </button>
-      </div>
+    <div className="w-full p-2 flex bg-softSkyBlue max-w-content">
+      <button
+        className="w-8 h-8 text-center mr-5 p-1 bg-mutedLavenderBlue rounded-lg shadow-md hover:bg-StormyDustyTurquoise focus:outline-none focus:shadow-outline"
+        onClick={() => setDropdownToggle(!dropdownToggle)}
+      >
+        {getInstrumentText()}
+      </button>
       {!dropdownToggle ? (
         <>
-          <div className="flex items-center w-full">
+          <div className="flex items-center w-full appear">
             <label htmlFor="pitch" className="mr-2">
               🎚️
             </label>
@@ -72,7 +70,7 @@ const Mixer = ({
             />
             <span className="ml-2 flex-shrink-0 w-8">{mix[activeTrack][0]}</span>
           </div>
-          <div className="flex items-center ml-2 w-full">
+          <div className="flex items-center ml-2 w-full appear">
             <label htmlFor="volume" className="mr-2">
               🔊
             </label>
@@ -89,10 +87,10 @@ const Mixer = ({
           </div>
         </>
       ) : (
-        <div className="flex w-full bg-softSkyBlue">
+        <div className={`flex w-full bg-softSkyBlue appear`}>
           {instruments.map((instrument, index) => (
             <button
-              className="hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline px-2"
+              className="bg-mutedLavenderBlue hover:bg-StormyDustyTurquoise rounded-full focus:outline-none focus:shadow-outline px-1 mx-1"
               key={index}
               onClick={() => handleChangeInstrument(index)}
             >

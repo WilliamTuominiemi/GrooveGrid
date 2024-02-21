@@ -31,3 +31,16 @@ body {
     text-wrap: balance;
   }
 }
+
+.appear {
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 1;
+  }
+}
