@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
   webpack: (config, { isServer }) => {
     // a rule for handling MP3 files
     config.module.rules.push({
