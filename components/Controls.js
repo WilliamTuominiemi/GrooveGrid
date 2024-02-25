@@ -27,7 +27,7 @@ const Controls = ({ notes, mix, instrumentBoard }) => {
       });
 
       if (response.ok) {
-        router.push('/');
+        router.push('/feed');
       }
     } catch (error) {
       console.log(error);

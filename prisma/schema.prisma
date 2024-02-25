@@ -55,6 +55,7 @@ model Post {
   mix       Json
   instruments Json
   authorId  String
+  createdAt DateTime @default(now()) 
 
   @@index([authorId])
 }

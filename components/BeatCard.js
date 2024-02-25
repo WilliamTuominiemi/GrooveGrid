@@ -23,13 +23,13 @@ const beatCard = ({ notes, mix, instruments, creator }) => {
       <p className={`m-2 text-6xl ${isPlaying ? 'spin' : ''}`}>💿</p>
       <div className="grid gap-2 grid-cols-2 m-2">
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold   focus:outline-none focus:shadow-outline"
+          className="bg-blue-500 hover:bg-blue-700 focus:outline-none focus:shadow-outline"
           onClick={() => startPlaying()}
         >
           ▶️
         </button>
         <button
-          className="bg-white hover:bg-gray-700 text-white font-bold   focus:outline-none focus:shadow-outline"
+          className="bg-white hover:bg-gray-700 focus:outline-none focus:shadow-outline"
           onClick={() => stopPlaying()}
         >
           ⏹️

@@ -6,7 +6,7 @@ import BeatCard from '@/components/BeatCard';
 
 const BeatCardList = ({ data }) => {
   return (
-    <div className="grid grid-cols-4 gap-4 place-content-center ">
+    <div className="grid grid-cols-4 gap-4 place-content-center mx-10">
       {data.map((beat) => (
         <BeatCard
           key={beat.id}

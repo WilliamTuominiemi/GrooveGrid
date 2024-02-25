@@ -7,6 +7,9 @@ export const GET = async (request) => {
       include: {
         creator: true,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
     return new Response(JSON.stringify(beats), { status: 200 });
