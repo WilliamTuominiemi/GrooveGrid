@@ -38,7 +38,7 @@ const Nav = () => {
 
       {session?.user ? (
         <>
-          <button type="button" onClick={signOut} className="outline_btn">
+          <button type="button" onClick={signOut}>
             Sign Out
           </button>
 
@@ -47,7 +47,7 @@ const Nav = () => {
           </Link>
         </>
       ) : (
-        <button type="button" onClick={() => signIn('google')} className="black_btn relative">
+        <button type="button" onClick={() => signIn('google')}>
           Sign In
         </button>
       )}
