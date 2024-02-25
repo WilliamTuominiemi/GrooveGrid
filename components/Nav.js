@@ -23,34 +23,52 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="w-full mb-1 pt-1 bg-paleAqua">
-      <Link href="/" className="text-lg">
-        GrooveGrid
-      </Link>
+    <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-paleAqua shadow sm:items-baseline w-full">
+      <div className="mb-2 sm:mb-0">
+        <Link href="/" className="text-lg font-bold text-MidnightPowderBlue">
+          GrooveGrid
+        </Link>
+      </div>
 
-      <Link href="/" className="m-1 p-1">
-        Produce
-      </Link>
+      <div className="flex space-x-4 p-2">
+        <Link href="/" className="text-sm text-gray-700 hover:text-DeepMutedLavenderBlue transition duration-300">
+          Produce
+        </Link>
 
-      <Link href="/feed" className="m-1 p-1">
-        Feed
-      </Link>
+        <Link href="/feed" className="text-sm text-gray-700 hover:text-StormyDustyTurquoise transition duration-300">
+          Feed
+        </Link>
 
-      {session?.user ? (
-        <>
-          <button type="button" onClick={signOut}>
-            Sign Out
+        {session?.user ? (
+          <>
+            <button
+              type="button"
+              onClick={signOut}
+              className="text-sm text-gray-700 hover:text-NavyPaleAqua transition duration-300 focus:outline-none"
+            >
+              Sign Out
+            </button>
+
+            <Link href="/profile">
+              <Image
+                src={session?.user.image}
+                width={20}
+                height={20}
+                className="rounded-full cursor-pointer"
+                alt="profile"
+              />
+            </Link>
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={() => signIn('google')}
+            className="text-sm text-white bg-blue-500 hover:bg-blue-600 rounded focus:outline-none"
+          >
+            Sign In
           </button>
-
-          <Link href="/profile">
-            <Image src={session?.user.image} width={37} height={37} className="rounded-full" alt="profile" />
-          </Link>
-        </>
-      ) : (
-        <button type="button" onClick={() => signIn('google')}>
-          Sign In
-        </button>
-      )}
+        )}
+      </div>
     </nav>
   );
 };

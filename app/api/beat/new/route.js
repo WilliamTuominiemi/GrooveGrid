@@ -5,8 +5,6 @@ export const POST = async (req, res) => {
   const { userId, notes, mix, instrumentBoard } = await req.json();
 
   try {
-    console.log(userId, notes, mix, instrumentBoard);
-
     const newBeat = await prisma.post.create({
       data: {
         authorId: userId,
