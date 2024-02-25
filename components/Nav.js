@@ -12,6 +12,8 @@ const Nav = () => {
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
@@ -41,23 +43,42 @@ const Nav = () => {
 
         {session?.user ? (
           <>
-            <button
-              type="button"
-              onClick={signOut}
-              className="text-sm text-gray-700 hover:text-NavyPaleAqua transition duration-300 focus:outline-none"
-            >
-              Sign Out
-            </button>
+            <div className="relative inline-block">
+              <button
+                type="button"
+                className="rounded-full overflow-hidden focus:outline-none"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)} // Toggle dropdown state
+              >
+                <Image
+                  src={session?.user.image}
+                  width={20}
+                  height={20}
+                  className="rounded-full cursor-pointer"
+                  alt="profile"
+                />
+              </button>
 
-            <Link href="/profile">
-              <Image
-                src={session?.user.image}
-                width={20}
-                height={20}
-                className="rounded-full cursor-pointer"
-                alt="profile"
-              />
-            </Link>
+              {isDropdownOpen && ( // Conditionally render dropdown content
+                <div
+                  className="absolute right-0 z-10 origin-top-right focus:outline-none"
+                  role="menu"
+                  aria-labelledby="menu-button"
+                >
+                  <div className="rounded-md shadow-sm py-1 bg-white ring-1 ring-black ring-opacity-5">
+                    <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Profile
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={signOut}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </>
         ) : (
           <button

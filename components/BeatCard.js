@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import { play, stop } from '@/utils/buttonUtils';
 
 const beatCard = ({ notes, mix, instruments, creator }) => {
@@ -19,20 +21,21 @@ const beatCard = ({ notes, mix, instruments, creator }) => {
   };
 
   return (
-    <div className="bg-DarkSoftSkyBlue m-2 p-2 rounded flex flex-col items-center">
+    <div className="bg-gradient-to-l from-DarkSoftSkyBlue to-softSkyBlue m-2 p-2 rounded flex flex-col items-center">
       <p className={`m-2 text-6xl ${isPlaying ? 'spin' : ''}`}>💿</p>
       <div className="grid gap-2 grid-cols-2 m-2">
         <button
-          className="bg-blue-500 hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+          className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
           onClick={() => startPlaying()}
         >
-          ▶️
+          <Image src="/icons/play.svg" alt="Play Icon" width={10} height={10} />
         </button>
+
         <button
-          className="bg-white hover:bg-gray-700 focus:outline-none focus:shadow-outline"
+          className="bg-white hover:bg-gray-700 py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
           onClick={() => stopPlaying()}
         >
-          ⏹️
+          <Image src="/icons/stop.svg" alt="Stop Icon" width={10} height={10} />
         </button>
       </div>
 
