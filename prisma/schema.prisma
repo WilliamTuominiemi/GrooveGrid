@@ -51,9 +51,11 @@ model User {
 model Post {
   id        String  @id @default(cuid())
   creator   User    @relation(fields: [authorId], references: [id])
-  prompt    String
-  tag       String
+  notes     Json
+  mix       Json
+  instruments Json
   authorId  String
 
   @@index([authorId])
 }
+
