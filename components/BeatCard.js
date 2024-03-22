@@ -3,10 +3,13 @@
 import { useState } from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { play, stop } from '@/utils/buttonUtils';
 
 const beatCard = ({ notes, mix, instruments, creator }) => {
+  const profileLink = `/profile/${creator.id}`;
+
   const [isPlaying, setIsPlaying] = useState(false);
 
   const startPlaying = () => {
@@ -39,7 +42,9 @@ const beatCard = ({ notes, mix, instruments, creator }) => {
         </button>
       </div>
 
-      <p className="text-xs	font-thin tracking-tight text-center overline">Produced by {creator.name}</p>
+      <p className="text-xs	font-thin tracking-tight text-center">
+        Produced by <Link href={profileLink}>{creator.name}</Link>
+      </p>
     </div>
   );
 };
