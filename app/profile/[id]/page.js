@@ -1,7 +1,10 @@
 'use client';
 
+import { redirect } from 'next/navigation';
+
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -24,11 +27,17 @@ const BeatCardList = ({ data }) => {
 };
 
 const Profile = ({ params }) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [beats, setBeats] = useState([]);
 
   const [user, setUser] = useState();
+
+  if (status === 'authenticated') {
+    if (session.user.id === params.id) {
+      redirect('/profile');
+    }
+  }
 
   useEffect(() => {
     const fetchBeats = async () => {
@@ -44,19 +53,12 @@ const Profile = ({ params }) => {
         const response = await fetch(`/api/profile/${params.id}`);
         const data = await response.json();
         setUser(data);
-        console.log(data);
       }
     };
 
     fetchBeats();
     fetchUser();
   }, [params]);
-
-  const [description, setDescription] = useState('');
-
-  const handleChange = (event) => {
-    setDescription(event.target.value);
-  };
 
   return (
     <div>

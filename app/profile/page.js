@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -24,9 +24,13 @@ const BeatCardList = ({ data }) => {
 };
 
 const Profile = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [beats, setBeats] = useState([]);
+  const [user, setUser] = useState();
+
+  const [description, setDescription] = useState('');
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     const fetchBeats = async () => {
@@ -38,11 +42,18 @@ const Profile = () => {
       }
     };
 
-    fetchBeats();
-  }, [session]);
+    const fetchUser = async () => {
+      if (session) {
+        const response = await fetch(`/api/profile/${session.user.id}`);
+        const data = await response.json();
+        setUser(data);
+        setDescription(data.description);
+      }
+    };
 
-  const [description, setDescription] = useState('');
-  const [showButton, setShowButton] = useState(false);
+    fetchBeats();
+    fetchUser();
+  }, [session]);
 
   const handleChange = (event) => {
     setDescription(event.target.value);
@@ -65,6 +76,10 @@ const Profile = () => {
       console.error('Error fetching:', error);
     }
   };
+
+  if (status === 'loading') {
+    return <div>Loading profile...</div>;
+  }
 
   return (
     <div>
@@ -107,7 +122,16 @@ const Profile = () => {
           <BeatCardList data={beats} />
         </div>
       ) : (
-        <p>signIn </p>
+        <div className=" flex flex-col justify-center items-center px-6 py-4">
+          <h1 className="text-5xl font-bold text-center text-MidnightPowderBlue">Not logged in</h1>
+          <p className="text-xl text-gray-800 mt-4">You need to log in to view this page.</p>
+          <a
+            onClick={() => signIn('google')}
+            className="inline-flex items-center px-4 py-2 mt-8 font-bold text-white bg-MidnightPowderBlue rounded hover:bg-NavyPaleAqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dustyTurquoise"
+          >
+            Log in
+          </a>
+        </div>
       )}
     </div>
   );

@@ -84,9 +84,9 @@ const Nav = () => {
           <button
             type="button"
             onClick={() => signIn('google')}
-            className="text-sm text-white bg-blue-500 hover:bg-blue-600 rounded focus:outline-none"
+            className="text-sm text-white  bg-MidnightPowderBlue rounded hover:bg-NavyPaleAqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dustyTurquoise"
           >
-            Sign In
+            Log In
           </button>
         )}
       </div>
