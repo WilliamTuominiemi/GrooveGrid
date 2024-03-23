@@ -42,9 +42,28 @@ const Profile = () => {
   }, [session]);
 
   const [description, setDescription] = useState('');
+  const [showButton, setShowButton] = useState(false);
 
   const handleChange = (event) => {
     setDescription(event.target.value);
+    setShowButton(event.target.value.length > 0); // Show button only if text exists
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const response = await fetch('/api/profile/updateDescription', {
+        method: 'POST',
+        body: JSON.stringify({ description }),
+      });
+
+      if (response.ok) {
+        console.log('Description updated');
+      } else {
+        console.error('Error updating description:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching:', error);
+    }
   };
 
   return (
@@ -66,12 +85,22 @@ const Profile = () => {
               <textarea
                 id="description"
                 name="description"
+                maxLength="50"
                 placeholder="Write your description"
                 rows="2"
                 className="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 value={description}
                 onChange={handleChange}
               />
+              {showButton && (
+                <button
+                  type="button"
+                  className="mt-2 px-4 py-2 rounded-md bg-DarkSoftSkyBlue text-white hover:bg-DeepMutedLavenderBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={handleUpdate}
+                >
+                  Update
+                </button>
+              )}
               <p className="text-gray-600 m-2">tracks produced: {beats.length}</p>
             </div>
           </div>

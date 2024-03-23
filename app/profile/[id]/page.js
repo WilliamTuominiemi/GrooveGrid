@@ -74,14 +74,23 @@ const Profile = ({ params }) => {
               <h1 className="text-xl font-medium text-gray-800">{user.name}</h1>
             </div>
             <div className="flex flex-col">
-              <p>description</p>
+              <p className="m-2">{user.description}</p>
               <p className="text-gray-600 m-2">tracks produced: {beats.length}</p>
             </div>
           </div>
           <BeatCardList data={beats} />
         </div>
       ) : (
-        <p>signIn </p>
+        <div className=" flex flex-col justify-center items-center px-6 py-4">
+          <h1 className="text-5xl font-bold text-center text-MidnightPowderBlue">404</h1>
+          <p className="text-xl text-gray-800 mt-4">We can't seem to find the profile you're looking for.</p>
+          <a
+            href="/"
+            className="inline-flex items-center px-4 py-2 mt-8 font-bold text-white bg-MidnightPowderBlue rounded hover:bg-NavyPaleAqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dustyTurquoise"
+          >
+            Go Back Home
+          </a>
+        </div>
       )}
     </div>
   );

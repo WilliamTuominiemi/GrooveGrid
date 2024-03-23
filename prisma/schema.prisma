@@ -42,6 +42,7 @@ model User {
   email String  @unique
   name  String?
   image String?
+  description String?
   emailVerified Boolean?
   accounts      Account[]
   sessions      Session[]
