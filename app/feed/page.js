@@ -14,6 +14,9 @@ const BeatCardList = ({ data }) => {
           mix={beat.mix}
           instruments={beat.instruments}
           creator={beat.creator}
+          title={beat.title}
+          color1={beat.color1}
+          color2={beat.color2}
         />
       ))}
     </div>

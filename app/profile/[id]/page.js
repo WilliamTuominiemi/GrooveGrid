@@ -8,11 +8,11 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import BeatCard from '@/components/ProfileBeatCard';
+import BeatCard from '@/components/BeatCard';
 
 const BeatCardList = ({ data }) => {
   return (
-    <div className="grid grid-cols-3 gap-4 place-content-center m-5">
+    <div className="grid grid-cols-4 gap-4 place-content-center m-5">
       {data.map((beat) => (
         <BeatCard
           key={beat.id}
@@ -20,6 +20,9 @@ const BeatCardList = ({ data }) => {
           mix={beat.mix}
           instruments={beat.instruments}
           creator={beat.creator}
+          title={beat.title}
+          color1={beat.color1}
+          color2={beat.color2}
         />
       ))}
     </div>

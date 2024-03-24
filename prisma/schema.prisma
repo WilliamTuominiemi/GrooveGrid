@@ -52,6 +52,9 @@ model User {
 model Post {
   id        String  @id @default(cuid())
   creator   User    @relation(fields: [authorId], references: [id])
+  title     String
+  color1    String
+  color2    String
   notes     Json
   mix       Json
   instruments Json

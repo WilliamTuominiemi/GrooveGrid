@@ -5,7 +5,7 @@ import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import BeatCard from '@/components/ProfileBeatCard';
+import BeatCard from '@/components/BeatCard';
 
 const BeatCardList = ({ data }) => {
   return (
@@ -17,6 +17,9 @@ const BeatCardList = ({ data }) => {
           mix={beat.mix}
           instruments={beat.instruments}
           creator={beat.creator}
+          title={beat.title}
+          color1={beat.color1}
+          color2={beat.color2}
         />
       ))}
     </div>
@@ -35,7 +38,6 @@ const Profile = () => {
   useEffect(() => {
     const fetchBeats = async () => {
       if (session) {
-        console.log(`/api/beat/${session.user.id}`);
         const response = await fetch(`/api/beat/${session.user.id}`);
         const data = await response.json();
         setBeats(data);
@@ -66,12 +68,6 @@ const Profile = () => {
         method: 'POST',
         body: JSON.stringify({ description }),
       });
-
-      if (response.ok) {
-        console.log('Description updated');
-      } else {
-        console.error('Error updating description:', response.statusText);
-      }
     } catch (error) {
       console.error('Error fetching:', error);
     }
