@@ -68,6 +68,8 @@ const Profile = () => {
         method: 'POST',
         body: JSON.stringify({ description }),
       });
+
+      setShowButton(false);
     } catch (error) {
       console.error('Error fetching:', error);
     }
