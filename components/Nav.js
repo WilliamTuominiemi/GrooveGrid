@@ -25,20 +25,20 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-paleAqua shadow sm:items-baseline w-full">
+    <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-3 px-6 bg-paleAqua shadow sm:items-baseline w-full">
       <div className="mb-2 sm:mb-0">
-        <Link href="/" className="text-lg font-bold text-MidnightPowderBlue">
-          GrooveGrid
+        <Link href="/" className="text-lg font-bold  text-DeepMutedLavenderBlue">
+          🎶 GrooveGrid
         </Link>
       </div>
 
-      <div className="flex space-x-4 p-2">
+      <div className="flex space-x-10">
         <Link href="/" className="text-sm text-gray-700 hover:text-DeepMutedLavenderBlue transition duration-300">
-          Produce
+          🎛️ Produce
         </Link>
 
         <Link href="/feed" className="text-sm text-gray-700 hover:text-StormyDustyTurquoise transition duration-300">
-          Feed
+          📰 Feed
         </Link>
 
         {session?.user ? (
@@ -46,14 +46,14 @@ const Nav = () => {
             <div className="relative inline-block">
               <button
                 type="button"
-                className="rounded-full overflow-hidden focus:outline-none"
+                className="overflow-hidden focus:outline-none"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)} // Toggle dropdown state
               >
                 <Image
                   src={session?.user.image}
                   width={20}
                   height={20}
-                  className="rounded-full cursor-pointer"
+                  className="rounded-md cursor-pointer"
                   alt="profile"
                 />
               </button>
@@ -84,9 +84,9 @@ const Nav = () => {
           <button
             type="button"
             onClick={() => signIn('google')}
-            className="text-sm text-white  bg-MidnightPowderBlue rounded hover:bg-NavyPaleAqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dustyTurquoise"
+            className="text-sm text-white  bg-MidnightPowderBlue bg-opacity-50 px-1 rounded-md hover:bg-NavyPaleAqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dustyTurquoise"
           >
-            Log In
+            🖊️ Sign In
           </button>
         )}
       </div>
