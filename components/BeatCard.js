@@ -69,7 +69,7 @@ const beatCard = ({ id, notes, mix, instruments, creator, title, color1, color2,
         </button>
       </div>
       <p className="text-xs	font-thin tracking-tight">
-        Played <a class=" font-medium">{_plays}</a> times
+        Played <a className=" font-medium">{_plays}</a> times
       </p>
     </div>
   );

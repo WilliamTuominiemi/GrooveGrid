@@ -38,6 +38,8 @@ const Profile = ({ params }) => {
 
   const [user, setUser] = useState();
 
+  const [totalPlays, setTotalPlays] = useState();
+
   if (status === 'authenticated') {
     if (session.user.id === params.id) {
       redirect('/profile');
@@ -50,6 +52,9 @@ const Profile = ({ params }) => {
         const response = await fetch(`/api/beat/${params.id}`);
         const data = await response.json();
         setBeats(data);
+
+        const total = data.reduce((acc, beat) => acc + beat.plays, 0);
+        setTotalPlays(total);
       }
     };
 
@@ -83,6 +88,7 @@ const Profile = ({ params }) => {
             <div className="flex flex-col">
               <p className="m-2">{user.description}</p>
               <p className="text-gray-600 m-2">tracks produced: {beats.length}</p>
+              <p className="text-gray-600 m-2">total plays: {totalPlays}</p>
             </div>
           </div>
           <BeatCardList data={beats} />

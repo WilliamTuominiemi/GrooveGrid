@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import BeatCard from '@/components/BeatCard';
+import Container from 'postcss/lib/container';
 
 const BeatCardList = ({ data }) => {
   return (
@@ -37,12 +38,17 @@ const Profile = () => {
   const [description, setDescription] = useState('');
   const [showButton, setShowButton] = useState(false);
 
+  const [totalPlays, setTotalPlays] = useState();
+
   useEffect(() => {
     const fetchBeats = async () => {
       if (session) {
         const response = await fetch(`/api/beat/${session.user.id}`);
         const data = await response.json();
         setBeats(data);
+
+        const total = data.reduce((acc, beat) => acc + beat.plays, 0);
+        setTotalPlays(total);
       }
     };
 
@@ -117,6 +123,7 @@ const Profile = () => {
                 </button>
               )}
               <p className="text-gray-600 m-2">tracks produced: {beats.length}</p>
+              <p className="text-gray-600 m-2">total plays: {totalPlays}</p>
             </div>
           </div>
           <BeatCardList data={beats} />
