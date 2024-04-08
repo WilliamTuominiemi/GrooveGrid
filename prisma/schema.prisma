@@ -58,6 +58,7 @@ model Post {
   notes     Json
   mix       Json
   instruments Json
+  plays     Int 
   authorId  String
   createdAt DateTime @default(now()) 
 

@@ -14,6 +14,7 @@ export const POST = async (req, res) => {
         notes,
         mix,
         instruments: instrumentBoard,
+        plays: 0,
       },
     });
 

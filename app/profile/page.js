@@ -13,6 +13,7 @@ const BeatCardList = ({ data }) => {
       {data.map((beat) => (
         <BeatCard
           key={beat.id}
+          id={beat.id}
           notes={beat.notes}
           mix={beat.mix}
           instruments={beat.instruments}
@@ -20,6 +21,7 @@ const BeatCardList = ({ data }) => {
           title={beat.title}
           color1={beat.color1}
           color2={beat.color2}
+          plays={beat.plays}
         />
       ))}
     </div>
