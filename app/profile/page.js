@@ -122,8 +122,12 @@ const Profile = () => {
                   Update
                 </button>
               )}
-              <p className="text-gray-600 m-2">tracks produced: {beats.length}</p>
-              <p className="text-gray-600 m-2">total plays: {totalPlays}</p>
+              <p className="text-gray-600 m-2">
+                📀 Tracks produced <a className="font-medium"> {beats.length} </a>
+              </p>
+              <p className="text-gray-600 m-2">
+                ▶️ Total plays <a className="font-medium">{totalPlays}</a>
+              </p>
             </div>
           </div>
           <BeatCardList data={beats} />
