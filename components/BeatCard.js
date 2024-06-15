@@ -3,13 +3,10 @@
 import { useState } from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { play, stop } from '../utils/buttonUtils';
 
 const beatCard = ({ id, notes, mix, instruments, creator, title, color1, color2, plays }) => {
-  const profileLink = `/profile/${creator.id}`;
-
   const [isPlaying, setIsPlaying] = useState(false);
   const [_plays, setPlays] = useState(plays);
 
@@ -44,9 +41,7 @@ const beatCard = ({ id, notes, mix, instruments, creator, title, color1, color2,
     <div className="m-2 p-2 rounded flex flex-col items-center" style={gradientStyle}>
       <p className={`m-2 text-6xl ${isPlaying ? 'spin' : ''}`}>💿</p>
       <p className="text-3xl	line-clamp-1 tracking-tight text-center">{title}</p>
-      <p className="text-xs	font-light tracking-tight text-center hover:font-medium">
-        <Link href={profileLink}>{creator.name}</Link>
-      </p>
+      <p className="text-xs	font-light tracking-tight text-center ">{creator.name}</p>
       <div className="grid gap-2 grid-cols-2 m-2">
         <button
           className={`bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border-2 border-black ${
